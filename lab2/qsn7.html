@@ -1,0 +1,182 @@
+
+<!-- Design a student registration form using HTML and CSS that collects user information such as username,
+ email, password, age, gender, course and acceptance of terms and conditions. Use CSS to style the form 
+ elements including text fields, radio buttons, dropdown lists and checkboxes to make the form visually 
+ appealing and user-friendly. Apply layout techniques such as spacing, alignment, borders, background colors
+  and font styling to organize the form in a structured manner. Ensure that form validation messages and required 
+  fields are clearly visible and highlight the input fields when focused. As a challenge, use CSS to display a 
+  message box or style the alert area that appears if the user’s age is less than 16 and apply hover or focus 
+  effects on the submit button to indicate interactivity. -->
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .registration-form {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .registration-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="number"],
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #006494;
+      box-shadow: 0 0 5px rgba(0, 100, 148, 0.3);
+      outline: none;
+    }
+
+    .form-group .options {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #006494;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #00527a;
+      transform: scale(1.02);
+    }
+
+    .alert {
+      background-color: #ffdddd;
+      border-left: 5px solid #ff4c4c;
+      padding: 10px;
+      margin-bottom: 15px;
+      display: none; 
+    }
+  </style>
+</head>
+<body>
+
+  <form class="registration-form" id="regForm">
+    <h2>Student Registration</h2>
+
+    <div class="alert" id="ageAlert">You must be at least 16 years old to register.</div>
+
+    <div class="form-group">
+      <label for="username">Username *</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password *</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age *</label>
+      <input type="number" id="age" name="age" min="1" required>
+    </div>
+
+    <div class="form-group">
+      <label>Gender *</label>
+      <div class="options">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="course">Course *</label>
+      <select id="course" name="course" required>
+        <option value="">Select a course</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Civil Engineering">Civil Engineering</option>
+      </select>
+    </div>
+
+    <div class="form-group terms">
+      <input type="checkbox" id="terms" name="terms" required>
+      <label for="terms">I accept the terms and conditions *</label>
+    </div>
+
+    <button type="submit" class="submit-btn">Register</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('regForm');
+    const ageInput = document.getElementById('age');
+    const ageAlert = document.getElementById('ageAlert');
+
+    form.addEventListener('submit', function(e) {
+      if (parseInt(ageInput.value) < 16) {
+        e.preventDefault();
+        ageAlert.style.display = 'block';
+        ageInput.focus();
+      } else {
+        ageAlert.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

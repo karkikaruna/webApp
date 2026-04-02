@@ -1,0 +1,275 @@
+<!-- Create a registration form with the following fields: username, email, role (dropdown: Student or
+ Teacher), password, confirm password,  full name, email, password, age, gender, course and acceptance of 
+ terms and conditions. Validate the form according to these rules:
+Email must match the role:
+If Student → email must end with @student.edu.np
+If Teacher → email must end with @tutor.edu.np
+Confirm Password must match Password.
+Highlight invalid inputs with a red border and show error messages. Prevent form submission if any validation 
+fails. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 450px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid black;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+
+        .invalid {
+            border: 2px solid red;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .terms input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration Form</h2>
+
+<form id="regForm" onsubmit="return validateForm()">
+
+<label>Username:</label>
+<input type="text" id="username">
+<div class="error" id="usernameError"></div>
+
+<label>Full Name:</label>
+<input type="text" id="fullname">
+<div class="error" id="fullnameError"></div>
+
+<label>Role:</label>
+<select id="role">
+    <option value="">Select Role</option>
+    <option value="Student">Student</option>
+    <option value="Teacher">Teacher</option>
+</select>
+<div class="error" id="roleError"></div>
+
+<label>Email:</label>
+<input type="text" id="email">
+<div class="error" id="emailError"></div>
+
+<label>Password:</label>
+<input type="password" id="password">
+<div class="error" id="passwordError"></div>
+
+<label>Confirm Password:</label>
+<input type="password" id="confirmPassword">
+<div class="error" id="confirmPasswordError"></div>
+
+<label>Age:</label>
+<input type="number" id="age">
+<div class="error" id="ageError"></div>
+
+<label>Gender:</label>
+<select id="gender">
+    <option value="">Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+</select>
+<div class="error" id="genderError"></div>
+
+<label>Course:</label>
+<input type="text" id="course">
+<div class="error" id="courseError"></div>
+
+<div class="terms">
+    <input type="checkbox" id="terms">
+    <label for="terms">I accept Terms and Conditions</label>
+</div>
+
+<div class="error" id="termsError"></div>
+
+<br>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+<script>
+function setError(id, message) {
+    document.getElementById(id).textContent = message;
+}
+
+function setInvalid(field) {
+    field.classList.add("invalid");
+}
+
+function clearError(id, field) {
+    document.getElementById(id).textContent = "";
+    field.classList.remove("invalid");
+}
+
+function validateForm() {
+
+    let valid = true;
+
+    let username = document.getElementById("username");
+    let fullname = document.getElementById("fullname");
+    let role = document.getElementById("role");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirmPassword");
+    let age = document.getElementById("age");
+    let gender = document.getElementById("gender");
+    let course = document.getElementById("course");
+    let terms = document.getElementById("terms");
+
+    let fields = [username, fullname, role, email,
+                  password, confirmPassword, age,
+                  gender, course];
+
+    let errorIds = ["usernameError","fullnameError","roleError",
+                    "emailError","passwordError",
+                    "confirmPasswordError","ageError",
+                    "genderError","courseError"];
+
+    for (let i = 0; i < fields.length; i++) {
+        clearError(errorIds[i], fields[i]);
+    }
+
+    setError("termsError", "");
+
+    if (username.value.trim() === "") {
+        setError("usernameError", "Username is required");
+        setInvalid(username);
+        valid = false;
+    }
+
+    if (fullname.value.trim() === "") {
+        setError("fullnameError", "Full name is required");
+        setInvalid(fullname);
+        valid = false;
+    }
+
+    if (role.value === "") {
+        setError("roleError", "Please select a role");
+        setInvalid(role);
+        valid = false;
+    }
+
+    if (email.value.trim() === "") {
+        setError("emailError", "Email is required");
+        setInvalid(email);
+        valid = false;
+    }
+    else {
+        if (role.value === "Student" &&
+            !email.value.endsWith("@student.edu.np")) {
+
+            setError("emailError",
+            "Student email must end with @student.edu.np");
+            setInvalid(email);
+            valid = false;
+        }
+
+        if (role.value === "Teacher" &&
+            !email.value.endsWith("@tutor.edu.np")) {
+
+            setError("emailError",
+            "Teacher email must end with @tutor.edu.np");
+            setInvalid(email);
+            valid = false;
+        }
+    }
+
+    if (password.value === "") {
+        setError("passwordError", "Password is required");
+        setInvalid(password);
+        valid = false;
+    }
+
+    if (confirmPassword.value !== password.value) {
+        setError("confirmPasswordError",
+        "Passwords do not match");
+        setInvalid(confirmPassword);
+        valid = false;
+    }
+
+    if (age.value === "" || age.value <= 0) {
+        setError("ageError", "Enter valid age");
+        setInvalid(age);
+        valid = false;
+    }
+
+    if (gender.value === "") {
+        setError("genderError", "Select gender");
+        setInvalid(gender);
+        valid = false;
+    }
+
+    if (course.value.trim() === "") {
+        setError("courseError", "Course is required");
+        setInvalid(course);
+        valid = false;
+    }
+
+    if (!terms.checked) {
+        setError("termsError",
+        "You must accept Terms and Conditions");
+        valid = false;
+    }
+
+    return valid;  
+}
+</script>
+</head>
+<body>
+

@@ -1,0 +1,177 @@
+<!-- Create a webpage using HTML and CSS that displays student information in a tabular format.
+ Use the <table>, <tr>, <th>, and <td> tags to design the table with appropriate headings and at least 
+    seven rows of student data. Apply CSS to style the table including borders, padding, spacing, text alignment,
+     background colors and font styling. Use alternate row coloring, hover effects, and table caption styling to 
+     improve readability and visual appeal. Ensure that the table is responsive and maintains proper structure
+      and alignment on different screen sizes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Information Table</title>
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 40px 20px;
+    }
+
+    .table-container {
+        max-width: 1000px;
+        margin: auto;
+        overflow-x: auto; 
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        min-width: 700px;
+    }
+
+    caption {
+        caption-side: top;
+        font-size: 22px;
+        font-weight: 600;
+        padding: 15px;
+        color: #2c3e50;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #1b263b;
+        color: #ffffff;
+    }
+
+    th, td {
+        padding: 14px 16px;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8f9fb;
+    }
+
+    tbody tr:hover {
+        background-color: #e3f2fd;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+    td:first-child,
+    th:first-child {
+        text-align: left;
+    }
+
+    @media (max-width: 768px) {
+        caption {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="table-container">
+    <table>
+        <caption>Student Information Record</caption>
+
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Email</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>CS101</td>
+                <td>Sezal Acharya</td>
+                <td>Computer Engineering </td>
+                <td>5th</td>
+                <td>sezal@gmail.com</td>
+                <td>3.75</td>
+            </tr>
+
+            <tr>
+                <td>CS102</td>
+                <td>Priya Thapa</td>
+                <td>Computer Enginnering</td>
+                <td>4th</td>
+                <td>priya@example.com</td>
+                <td>3.82</td>
+            </tr>
+
+            <tr>
+                <td>EC106</td>
+                <td>Risab Karki</td>
+                <td>Electronics Engineering</td>
+                <td>6th</td>
+                <td>risab@example.com</td>
+                <td>3.5</td>
+            </tr>
+
+            <tr>
+                <td>CE</td>
+                <td>Sneha Rai</td>
+                <td>Civil Engineering</td>
+                <td>3rd</td>
+                <td>sneha@example.com</td>
+                <td>3.54</td>
+            </tr>
+
+            <tr>
+                <td>EE109</td>
+                <td>Manisha Gurung</td>
+                <td>Mechanical Engineering</td>
+                <td>7th</td>
+                <td>manisha@example.com</td>
+                <td>3.61</td>
+            </tr>
+
+            <tr>
+                <td>CE108</td>
+                <td>Trishala Siwakoti</td>
+                <td>Civil Engineering</td>
+                <td>2nd</td>
+                <td>trishala@example.com</td>
+                <td>3.6</td>
+            </tr>
+
+            <tr>
+                <td>CS</td>
+                <td>Kriti Adhikari</td>
+                <td>Computer Engineering</td>
+                <td>8th</td>
+                <td>kriti@example.com</td>
+                <td>3.98</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

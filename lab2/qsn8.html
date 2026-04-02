@@ -1,0 +1,185 @@
+<!-- Create a personal profile card using HTML and CSS that displays a user’s basic information in a visually 
+structured format. The profile card should include a profile image, full name, short description or bio,
+ research interests, skills and contact information such as email or website using hyperlinks. Use CSS to style
+  the card with appropriate borders, shadows, spacing, background colors and font styles. Apply layout techniques 
+  such as Flexbox or Grid to align the content inside the card. Include hover effects, transitions or subtle 
+  animations to enhance the presentation of the card and ensure that all information is clearly readable and
+   well-organized. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Card</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .profile-card {
+        background: #ffffff;
+        width: 850px;
+        max-width: 95%;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        display: flex;
+        padding: 40px;
+        gap: 40px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .profile-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-left img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid #1e293b;
+        transition: transform 0.4s ease;
+    }
+
+    .profile-left img:hover {
+        transform: scale(1.05);
+    }
+
+    .profile-left h2 {
+        margin-top: 20px;
+        font-size: 24px;
+        color: #0f172a;
+    }
+
+    .profile-left p {
+        margin-top: 10px;
+        font-size: 15px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .profile-right {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #1e293b;
+    }
+
+    .section p, .section li {
+        font-size: 14px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .contact a {
+        text-decoration: none;
+        color: #2563eb;
+        transition: color 0.3s ease;
+    }
+
+    .contact a:hover {
+        color: #1e40af;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .profile-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-right {
+            align-items: center;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+
+    <div class="profile-left">
+        <img src="image/karuna.jpg" alt="Profile Image">
+        <h2>Karuna Karki</h2>
+        <p>
+            Undergraduate Computer Engineering student passionate about
+            Robotics, Artificial Intelligence and Full Stack Development.
+        </p>
+    </div>
+
+    <div class="profile-right">
+
+        <div class="section">
+            <h3>Research Interests</h3>
+            <p>Robotics, AI/ML, Internet of Things (IoT)</p>
+        </div>
+
+        <div class="section">
+            <h3>Skills</h3>
+            <ul>
+                <li>C / C++</li>
+                <li>Python</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Next.js, Node.js, MongoDB</li>
+                <li>Arduino, ESP32, Raspberry Pi</li>
+            </ul>
+        </div>
+
+        <div class="section contact">
+            <h3>Contact:</h3>
+            <p>Email: 
+                <a href="mailto:karunakarki840@gmail.com">
+                    karunakarki840@gmail.com
+                </a>
+            </p>
+            <p>Website: 
+                <a href="https://karkikaruna1.com.np" >
+                    www.karkikaruna1.com.np
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

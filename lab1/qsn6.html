@@ -1,0 +1,105 @@
+ <!-- 6. Create a multi-section webpage using semantic HTML elements
+only. The webpage should include a <header> section containing
+the title of the website, a <nav> section with navigation links,
+multiple <section> elements for different content areas, and a
+<footer> section for footer information. Each navigation link should
+use anchor tags (<a>) to scroll to its corresponding section using
+section id attributes. Ensure proper use of semantic tags,
+meaningful section headings, and well-structured HTML code.
+Navigation between sections should work correctly when the links
+are clicked. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK Store</title>
+</head>
+<body>
+    <header>
+        <h1>KK Store</h1>
+        <p>Your trusted online delivery platform</p>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to KK Store</h2>
+            <p>
+                KK Store is an online delivery platform where you can order
+                your favorite products easily. Just place an order and we
+                will deliver it to your doorstep.
+            </p>
+        </section>
+
+        <section id="products">
+            <h2>Featured Products</h2>
+
+            <article>
+                <figure>
+                    <img src="image/iphone17.png" alt="iPhone 17 Pro Max" width="250">
+                    <figcaption>iPhone 17 Pro Max</figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <figure>
+                    <img src="image/iphone16.jpg" alt="iPhone 16 Pro Max" width="250">
+                    <figcaption>iPhone 16 Pro Max</figcaption>
+                </figure>
+            </article>
+
+            
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>
+                KK Store provides fast, reliable, and high-quality delivery
+                services. Our mission is customer satisfaction through
+                speed, quality, and trust.
+            </p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+
+            <form>
+                <fieldset>
+                    <legend>Send Us a Message</legend>
+
+                    <label for="name">Full Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="email">Email Address:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="40" required></textarea><br><br>
+
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+
+            <h3>Other Contact Information</h3>
+            <address>
+                Email: <a href="mailto:kkstore@gmail.com">kkstore@gmail.com</a><br>
+                Phone: +977 9898989898
+            </address>
+        </section>
+
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 KK Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

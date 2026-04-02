@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ffcc00;
+            color: #000;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffaa00;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Light Bulb Toggle</h1>
+        <img id="bulb" src="image/lightoff.png" alt="Light Bulb">
+        <br>
+        <button id="toggleBtn">Turn ON</button>
+        <div id="status">The bulb is OFF</div>
+    </div>
+
+    <script>
+        const bulb = document.getElementById('bulb');
+        const btn = document.getElementById('toggleBtn');
+        const status = document.getElementById('status');
+
+        let isOn = false;
+
+        btn.addEventListener('click', () => {
+            if (isOn) {
+        
+                bulb.src = 'image/lightoff.png';
+                status.textContent = 'The bulb is OFF';
+                btn.textContent = 'Turn ON';
+                isOn = false;
+            } else {
+                bulb.src = 'image/lighton.png';
+                status.textContent = 'The bulb is ON';
+                btn.textContent = 'Turn OFF';
+                isOn = true;
+            }
+        });
+    </script>
+</body>
+</html>

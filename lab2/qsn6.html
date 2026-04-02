@@ -1,0 +1,128 @@
+<!-- Create a webpage that demonstrates advanced CSS features. Use pseudo-classes such as hover,
+ focus, and active, and pseudo-elements such as before and after. Apply CSS transitions, transforms,
+  and animations using keyframes. Use CSS variables to define common colors and apply media queries to make 
+  the webpage responsive for different screen sizes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced CSS Demo</title>
+<style>
+
+  :root {
+    --primary-color: #006494;
+    --secondary-color: #778da9;
+    --background-color: #f0f4f8;
+    --text-color: #0d1b2a;
+    --button-hover: #415a77;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.1);
+  }
+
+  .btn:active {
+    transform: scale(0.95);
+  }
+
+  .btn:focus {
+    outline: 2px solid var(--secondary-color);
+  }
+
+  .btn::before {
+    content: "🚀";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+  }
+
+  .btn:hover::before {
+    left: 10px;
+  }
+
+  .card {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+  @media (max-width: 600px) {
+    .card {
+      width: 90%;
+      padding: 15px;
+    }
+
+    .btn {
+      font-size: 16px;
+      padding: 12px 20px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Advanced CSS Features</h1>
+
+<div class="card">
+  <h2>Interactive Card</h2>
+  <p>I am a Interactive card!</p>
+  <button class="btn">Click Me</button>
+</div>
+
+<div class="card">
+  <h2>Responsive Design</h2>
+  <p>I am a responsive card!</p>
+  <button class="btn">Try Me</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!-- Create a site that needs to have two buttons; one for adding an item into the list and another 
+for removing the last item from the list. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qsn1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6e6e6;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            border: 3px solid black;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+        .btn {
+            padding: 8px 12px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .add-btn {
+            background-color: #7ed957;
+        }
+
+        h2{
+            margin-bottom: 15px;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .input-section {
+            background-color: #9bbdc9;
+            padding: 10px;
+            margin-top: 15px;
+            border-left: 5px solid red;
+        }
+
+        input {
+            padding: 5px;
+            width: 180px;
+        }
+
+        ul {
+            margin-top: 20px;
+            list-style-type: disc;
+        }
+
+        li {
+            background-color: yellow;
+            padding: 8px;
+            margin: 8px 0;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Dynamic List Controller</h2>
+    <button class="btn add-btn" onclick="addItem()">Add Item</button>
+    <button class="btn remove-btn" onclick="removeLastItem()">Remove Last Item</button>
+
+    <div class="input-section">
+        Type an item to insert into List:
+        <input type="text" id="itemInput" placeholder="Enter item">
+        <button onclick="addItem()">ADD</button>
+    </div>
+
+    <ul id="itemList">
+        <li>Apple</li>
+        <li>Ball</li>
+    </ul>
+
+</div>
+
+<script>
+    function addItem() {
+        let input = document.getElementById("itemInput");
+        let value = input.value.trim();
+        let list = document.getElementById("itemList");
+
+        if (value === "") {
+            alert("Please enter an item!");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent = value;
+
+        list.appendChild(li);
+
+        input.value = "";
+    }
+
+    function removeLastItem() {
+        let list = document.getElementById("itemList");
+
+        if (list.lastChild) {
+            list.removeChild(list.lastChild);
+        } else {
+            alert("No items to remove!");
+        }
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!-- 7. Create a webpage using HTML only that demonstrates the use of
+different types of lists. Display an unordered list showing at least
+five favorite subjects or skills and an ordered list showing three
+daily activities or steps of a process. Also include a description list
+(<dl>) with at least two terms and their corresponding descriptions.
+Demonstrate list nesting by placing one list inside another and as a
+mini challenge, change the list style using the type attribute and
+create a mixed list where an unordered list is placed inside an
+ordered list. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Lists Demo</title>
+</head>
+<body>
+    <h2>Favourite skills</h2>
+    <ul type="circle">
+        <li>Robotics</li>
+        <li>AI/ML</li>
+        <li>Full stack web development</li>
+        <li>App development</li>
+        <li>3D Design</li>
+    </ul>
+    <h2>Software Development Life Cycle (ordered list)</h2>
+    <ol type="A">
+        <li>Planning</li>
+        <li>Defining</li>
+        <li>Designing</li>
+        <li>Building</li>
+        <li>Testing</li>
+        <li>Deployment</li>
+    </ol>
+<h2>Description List</h2>
+<dl>
+    <dt>HTML</dt>
+    <dd>HTML stands for HyperText Markup Language and is used to create web pages.</dd>
+    <dt>CSS</dt>
+    <dd>CSS is used to style and design HTML web pages.</dd>
+</dl>
+<h2>Nested List Example</h2>
+<ul>
+    <li>Programming Languages</li>
+        <ul>
+        <li>C</li>
+        <li>C++</li>
+        <li>Python</li>
+        <li>Java</li>
+        </ul>
+    <li>Tools</li>
+    <ul>
+        <li>Vscode</li>
+        <li>Git</li>
+        <li>Docker</li>
+    </ul>
+</ul>
+
+<h2>Mixed List (unordered List inside ordered list)</h2>
+<ol type="I">
+    <li>Frontend Technologies</li>
+    <ul type ="square">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+    </ul>
+    <li>Backend Technologies</li>
+    <ul type="disc">
+        <li>Node.js</li>
+        <li>Express</li>
+        <li>MongoDB</li>
+    </ul>
+</ol>
+    
+</body>
+</html>

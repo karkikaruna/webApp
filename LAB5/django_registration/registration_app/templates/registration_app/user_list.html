@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registered Users</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    h1 { font-size: 1.8rem; color: #2d3748; }
+
+    .btn-register {
+      background: #4299e1;
+      color: white;
+      padding: 9px 18px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-register:hover { background: #3182ce; }
+
+    .count {
+      background: #ebf8ff;
+      color: #2b6cb0;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .empty {
+      background: white;
+      border-radius: 10px;
+      padding: 48px;
+      text-align: center;
+      color: #a0aec0;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    table {
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-collapse: collapse;
+      overflow: hidden;
+    }
+
+    thead {
+      background: #4299e1;
+      color: white;
+    }
+
+    th {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 13px 16px;
+      font-size: 0.92rem;
+      color: #2d3748;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f7fafc; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .badge-M { background: #bee3f8; color: #2b6cb0; }
+    .badge-F { background: #fed7e2; color: #97266d; }
+    .badge-O { background: #e9d8fd; color: #553c9a; }
+
+    .row-num {
+      color: #a0aec0;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>👥 Registered Users</h1>
+      <a href="{% url 'register' %}" class="btn-register">+ Register New User</a>
+    </div>
+
+    <div class="count">
+      Total registered users: <strong>{{ users.count }}</strong>
+    </div>
+
+    {% if users %}
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Registered On</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td class="row-num">{{ forloop.counter }}</td>
+            <td><strong>{{ user.name }}</strong></td>
+            <td>@{{ user.username }}</td>
+            <td>{{ user.age }}</td>
+            <td>
+              <span class="badge badge-{{ user.gender }}">
+                {{ user.get_gender_display }}
+              </span>
+            </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.created_at|date:"d M Y" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="empty">
+         No users registered yet.<br>
+        <a href="{% url 'register' %}" style="color:#4299e1;">Be the first to register!</a>
+      </div>
+    {% endif %}
+
+  </div>
+</body>
+</html>
